@@ -108,6 +108,7 @@ contract LockAsset is ILockAsset, Ownable, ReentrancyGuard {
         // Check if can supply to aave and create vault
         Main(
             _title, 
+            _lockperiod,
             msg.value, 
             _weth, 
             _pool, 
@@ -197,6 +198,7 @@ contract LockAsset is ILockAsset, Ownable, ReentrancyGuard {
         // Check if can supply to aave and create vault
         Main(
             _title, 
+            _lockperiod,
             _amount, 
             _token, 
             _pool, 
@@ -320,6 +322,7 @@ contract LockAsset is ILockAsset, Ownable, ReentrancyGuard {
     //
     function Main(
         string memory _title,
+        uint8 _lockperiod,
         uint _amount, 
         address _token, 
         address _pool, 
@@ -370,8 +373,8 @@ contract LockAsset is ILockAsset, Ownable, ReentrancyGuard {
             amount: afterFee,
             unLockedTotal: 0,
             startDate: uint32(block.timestamp),
-            endDate: uint32(block.timestamp) + 600, 
-            //endDate: uint32(block.timestamp) + (_lockperiod * 86400),
+            //endDate: uint32(block.timestamp) + 600, 
+            endDate: uint32(block.timestamp) + (_lockperiod * 86400),
             vaultType: _vaultType,
             neededSlip: _neededSlip,
             unLockDuration: _unlockduration,
