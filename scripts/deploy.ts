@@ -1,11 +1,11 @@
 import { ethers } from 'hardhat';
  
 async function main() {
-    //deploy main contract
+    /*/deploy main contract
     const main = await ethers.deployContract('Main');
     await main.waitForDeployment();
     console.log('Main Contract Deployed at ' + main.target);
-
+    */
     //deploy LendManager then contract
     const lendmanager = await ethers.deployContract('LendManager');
     await lendmanager.waitForDeployment();
